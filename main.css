@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+#divContainer{
+    display: grid;
+    height: 500px;
+    width: 960px;
+    border: 1px solid lightgray;
+    /*grid-template-columns: auto;
+    grid-template-rows: auto;*/
+}
+
+.grid{
+    background-color: white;
+    border: 1px solid lightgray;
+    width: 1fr;
+    height: 1fr;
+}
+
+button, input, body {
+    font-family: calibri;
+    font-size: 12pt;
+}
