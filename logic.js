@@ -1,5 +1,5 @@
 // Defines the initial color
-let whichColor = "blue";
+let whichColor = "black";
 
 // Defines each of the buttons
 const divContainer = document.getElementById("divContainer");
@@ -9,11 +9,9 @@ const colorPicker = document
 const randomColor = document
   .getElementById("random-color")
   .addEventListener("click", getRandomColor);
-/*const totalRandom = document
+const totalRandom = document
   .getElementById("always-random-color")
-  .addEventListener("change", alwaysRandom);
-*/
-
+  .addEventListener("change", allRandom);
 
 // Create the initial 16x16 divs
 function initialGrid() {
@@ -31,7 +29,6 @@ function initialGrid() {
 }
 
 initialGrid();
-
 
 // Clears the existing grid and creates a new grid defined by the user
 let clear = document
@@ -61,11 +58,11 @@ function generateGrid() {
 }
 // Function to clear the grid
 function clearGrid() {
-    let toRemove = document.getElementsByClassName("grid");
-    while (toRemove.length > 0) {
-      toRemove[0].parentNode.removeChild(toRemove[0]);
-    }
+  let toRemove = document.getElementsByClassName("grid");
+  while (toRemove.length > 0) {
+    toRemove[0].parentNode.removeChild(toRemove[0]);
   }
+}
 
 // Colors the background of the divs
 function changeBackground(whichColor) {
@@ -75,7 +72,6 @@ function changeBackground(whichColor) {
     });
   });
 }
-
 
 // Allows the user to select their own color
 function userColor() {
@@ -93,4 +89,23 @@ function getRandomColor() {
     color += letters[Math.floor(Math.random() * 16)];
   }
   changeBackground(color);
+}
+
+
+// Problem Always Random function
+function allRandom() {
+  if (document
+    .getElementById("always-random-color").checked === true) {
+    [...document.querySelectorAll(".grid")].forEach(grid => {
+      grid.addEventListener("mouseover", function() {
+        grid.style.backgroundColor = getRandomColor();
+      });
+    });
+  } else {
+    [...document.querySelectorAll(".grid")].forEach(grid => {
+      grid.addEventListener("mouseover", function() {
+        grid.style.backgroundColor = "yellow";
+      });
+    });
+  }
 }
